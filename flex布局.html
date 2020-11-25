@@ -1,0 +1,79 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+        .box{
+            /*//兼容性写法*/
+            display: flex;
+            display: -webkit-flex;
+            width: 50%;
+            height: 50%;
+            background-color: azure;
+            margin: 0 auto;
+            /*flex的属性*/
+            flex-direction: column;  /*默认值row 水平轴上排列子元素     -reverse反向*/
+            /*flex-wrap:wrap;!*默认nowrap 默认不换行，当子元素总长度之和大于父元素时，子元素长度=父元素长度 /子元素个数   -reverse反向换行*!*/
+            /*flex-flow:row wrap-reverse;*/
+            /*justify-content:space-around;  水平对其方式：1.flex-start(左对齐) 2.flex-end(右对齐)3.center(居中) 4.space-between(两端对齐，间隔相等) 5.space-around(元素之间间隔相等且是两端到边距的两倍)*/
+            align-items: flex-start;
+            /*flex-start*/
+        }
+        /*.box div{*/
+        /*	width: 300px;*/
+        /*	height: 50px;*/
+        /*}*/
+        .box div:nth-child(1){
+            background-color: red;
+            width: 300px;
+            height: 50px;
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 60px;
+            /*flex是前三者的简写，grow shrink,basis,默认 0 1 auto*/
+            flex:auto; /* 1  1  auto*/
+            flex:none; /*0   0  auto*/
+            align-self: flex-end;
+        }
+        .box div:nth-child(2){
+            background-color: blueviolet;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        .box div:nth-child(3){
+            background-color: seagreen;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        .box div:nth-child(4){
+            background-color: firebrick;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        .box div:nth-child(5){
+            background-color: silver;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+        .box div:nth-child(6){
+            background-color: darkkhaki;
+            flex-grow: 1;
+            flex-shrink: 1;
+        }
+
+	</style>
+</head>
+<body>
+<div class="box">
+	<div>1</div>
+	<div>2</div>
+	<div>3</div>
+	<div>4</div>
+	<div>5</div>
+	<div>6</div>
+</div>
+</body>
+</html>

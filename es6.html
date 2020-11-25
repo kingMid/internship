@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<script>
+    //es6 let  const
+    function Bubble(arr){
+        let len =arr.length;
+        for (let i=0;i<len;i++){
+            for(let j=0;j<len-i;j++){
+                if(arr[j]>arr[j+1]){
+                    let tem= arr[j];
+                    arr[j] =arr[j+1];
+                    arr[j+1]=tem;
+                }
+            }
+        }
+        return arr
+    }
+    let arr1 = [1,6,2,7,8,9,4,5,3,10]
+    console.log(Bubble(arr1));
+
+    //1.变量不提升
+    console.log(a); //a undefined
+    var a = 10;
+
+    console.log(b);//ReferenceError
+    let  b = 10;
+
+    //2.暂时性死区
+    //在当前环境中，使用let定义某个变量之前不允许使用该变量，否则ReferenceError
+
+    //3.不可重复定义变量
+    let  a = 0;
+    let a = "ss";
+
+
+
+
+</script>
+</body>
+</html>

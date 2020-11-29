@@ -1,0 +1,79 @@
+<!---->
+<!--* @Description:将军调兵.html-->
+<!--* @author zhangzhong-->
+<!--* @date 2020/11/29-->
+<!--*/  -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<div id="root"></div>
+     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+     <script type="text/babel">
+	     class App extends React.Component{
+	         constructor(){
+                 super();
+                 this.state={
+                     RenmainNum:1000
+                 }
+                 this.setRenmainNum = this.setRenmainNum.bind(this)
+             }
+             setRenmainNum(num){
+	             this.setState({
+                     RenmainNum:this.state.RenmainNum-num*1
+	             })
+             }
+             render(){
+	             return(
+	                 <div>
+		                 <h1>总部剩余士兵{this.state.RenmainNum}</h1>
+		                 <General name="A" num ='200' setRenmainNum={this.setRenmainNum}></General>
+		                 <General name="B" num ='100' setRenmainNum={this.setRenmainNum} ></General>
+	                 </div>
+	             )
+             }
+
+	     }
+	     class General extends React.Component{
+	         constructor(props){
+                 super(props);
+                 this.state ={
+                     num:parseInt(this.props.num)
+                 }
+                 this.addSoldier = this.addSoldier.bind(this)
+             }
+             addSoldier(val){
+	             this.setState({
+                     num:this.state.num+parseInt(val)
+	             })
+
+             }
+             render(){
+	         return(
+	             <div>
+		             <p>将军{this.props.name}有{this.state.num}士兵</p>
+                     <input type="number" ref={
+                         (input)=>this.input=input
+                     }/>
+                     <button onClick={
+                         ()=>{
+                             this.props.setRenmainNum(this.input.value);
+                             this.addSoldier(this.input.value)
+                         }
+                     }>调兵</button>
+	             </div>
+	         )
+	         }
+	     }
+	     ReactDOM.render(<App/>,document.getElementById('root'));
+     </script>
+</body>
+</html>

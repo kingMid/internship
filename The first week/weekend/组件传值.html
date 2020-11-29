@@ -1,0 +1,98 @@
+<!--/**-->
+<!-- * @Description: 组件传值.html-->
+<!-- * @author zhangzhong-->
+<!-- * @date 2020/11/29 -->
+<!--*/-->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+
+    class Person extends React.Component{
+        constructor(...props){
+            super(...props);
+            this.state = {
+                msg: "zhangzhong is good boy",
+                fartoson: "通知张仲，今天放假了！！",
+                sontofar: ""
+
+            }
+            this.changeFartoson = this.changeFartoson.bind(this)
+            this.changeSontofar = this.changeSontofar.bind(this)
+
+        }
+        changeSontofar(val){
+            this.setState({
+                sontofar: val,
+	            msg:"zhangzhong is bad boy"
+
+            })
+        }
+        changeFartoson(val){
+            this.setState({
+                fartoson: val,
+                msg:"zhangzhong is good body"
+            })
+        }
+
+
+
+        render(){
+            return (
+                <div>
+                    <Children fartoson={this.state.fartoson}
+                              sontofar={this.state.sontofar}
+                              changeSontofar={this.changeSontofar}
+                              changeFartoson={this.changeFartoson}>
+                    </Children>
+                    <h1>{this.state.msg}</h1>
+                </div>
+            )
+
+        }
+    }
+
+    class Children extends React.Component{
+        render(){
+            return (
+                <div>
+                    <h1>KK say:</h1>
+                    <h2>{this.props.fartoson}</h2>
+                    <h3>{this.props.sontofar}</h3>
+                    <button onClick={
+                        () => {
+                            this.props.changeSontofar("哇，谢谢kk")
+                            this.props.changeFartoson("通知张仲，今天放假了！！")
+                        }
+                    }>张仲正在996ing
+                    </button>
+                    <button onClick={
+                        () => {
+                            this.props.changeFartoson("张仲今天早上偷懒了，不能放假")
+                            this.props.changeSontofar("呜呜~~~我再也不敢偷懒了")
+                        }
+                    }>彬哥发话了！
+                    </button>
+
+                </div>
+
+            )
+        }
+
+    }
+
+    ReactDOM.render(<Person/>,document.getElementById('root'))
+</script>
+</body>
+</html>

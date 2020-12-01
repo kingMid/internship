@@ -1,0 +1,114 @@
+<!---->
+<!--* @Description:生命周期.html-->
+<!--* @author zhangzhong-->
+<!--* @date 2020/12/1-->
+<!--*/  -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    class Person extends React.Component{
+        constructor(props){//重写构造函数,setup设置props state
+            super(props);//继承父业
+            this.state = {//重写属性
+                msg: "我是父的state属性，我传给你了props,但是我没更新"
+            }
+            console.log("this is constructor")
+        }
+
+        componentWillMount(){//将要挂载元素，可设置state,不推荐写Ajax请求
+            console.log("this is componentWillMount")
+        }
+
+        componentDidMount(){//挂载完毕，渲染结束，推荐在这里写Ajax因为,这里不存在异步而且页面已经初始化完渲染完毕，等待更新视图
+            console.log("this is componentDidMount")
+        }
+
+        render(){//纯函数 ，渲染组件和子组件，当需要更新渲染时，再执行
+            console.log("this is render")
+            return (
+                <div>
+                    <h1>我是父组件</h1>
+                    <button onClick={
+                        () => {
+                            this.setState({msg: "我把state.msg更新了"})
+                        }
+                    }> 修改父子传信msg
+                    </button>
+                    <Children msg={this.state.msg}/>
+                </div>
+            );
+        }
+    }
+
+
+    class Children extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                name: 'zhangzhong'
+            }
+            console.log("  Children is constructor")
+        }
+
+        componentWillMount(){
+            console.log("  Childrenis componentWillMount")
+        }
+
+        componentDidMount(){
+            console.log("  Children is componentDidMount")
+        }
+
+        componentWillReceiveProps(){//只有再父组件传来一个有状态的值发生改变时才触发该函数执行 比如本例值的父组件的state.msg
+            console.log("  Children of componentWillReceiveProps")
+        }
+
+        shouldComponentUpdate(nextProps,nextState){//不管父组件props还是子组件的state状态改变，都会走这个函数，当return true 会执行componentWillUpdate render componentDidUpdate 反之则不会
+            console.log("  Children of shouldComponentUpdate")
+            console.log(nextProps,nextState);
+            if(this.state.name==nextState){//由于该函数不会比较前后值是否一致，所以可以性能优化,可以判断当前值和将要修改的值一致就不更新，不同则更新
+                return false
+            }
+            return true
+        }
+
+        componentWillUpdate(){
+            console.log("  Children is componentWillUpdate")
+        }
+
+        componentDidUpdate(){
+            console.log("  Children is componentDidUpdate")
+        }
+
+        render(){
+            return (
+                <div>
+                    <p>我是children</p>
+	                <span style={{color:"red",background:"#000"}}>这是我父亲传给我props state属性：{this.props.msg}</span>
+	                <p style={{color:"yellow",background:"#000"}}>这是我自己state属性{this.state.name}</p>
+	                <button onClick={
+	                    ()=>{
+	                        this.setState({
+		                        name: "zhangzhong"
+	                        })
+	                    }}>children</button>
+                </div>
+            );
+        }
+    }
+
+    ReactDOM.render(<Person/>,document.getElementById('root'))
+</script>
+</body>
+</html>

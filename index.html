@@ -1,0 +1,71 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-12-01 20:10:33
+ * @LastEditTime: 2020-12-01 20:48:03
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \internship\index.html
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+<style type="text/css">
+	@keyframes moveLine {
+  0% {
+    background-position: -100px 1px, calc(100% - 1px) -100px, calc(100% + 100px) calc(100% - 1px), 1px 0px;
+  }
+  5% {
+    background-position: 0px 1px, calc(100% - 1px) -100px, calc(100% + 100px) calc(100% - 1px), 1px -100px;
+  }
+  30% {
+    background-position: 100% 1px, calc(100% - 1px) -100px, calc(100% + 100px) calc(100% - 1px), 1px -100px;
+  }
+  35% {
+    background-position: calc(100% + 100px) 1px, calc(100% - 1px) 0px, calc(100% + 100px) calc(100% - 1px), 1px -100px;
+  }
+  50% {
+    background-position: calc(100% + 100px) 1px, calc(100% - 1px) 100%, calc(100% + 100px) calc(100% - 1px), -100px -100px;
+  }
+  55% {
+    background-position: calc(100% + 100px) 1px, calc(100% - 1px) calc(100% + 100px), 100% calc(100% - 1px), -100px calc(100% + 100px);
+  }
+  80% {
+    background-position: calc(100% + 100px) 1px, calc(100% - 1px) calc(100% + 100px), 0px calc(100% - 1px), 1px calc(100% + 100px);
+  }
+  85% {
+    background-position: calc(100% + 100px) 1px, calc(100% - 1px) calc(100% + 100px), -100px calc(100% - 1px), 1px 100%;
+  }
+  100% {
+    background-position: calc(100% + 100px) 1px, calc(100% - 1px) calc(100% + 100px), -100px calc(100% - 1px), 1px 0px;
+  }
+}
+
+.marquee-line {
+  background-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, #000 100%), linear-gradient(0deg, #000 0%, rgba(0,0,0,0) 100%), linear-gradient(-90deg, rgba(0,0,0,0) 0%, #000 100%), linear-gradient(0deg, rgba(0,0,0,0) 0%, #000 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+  background-size: 100px 4px, 4px 100px, 100px 4px, 4px 100px;
+  background-position: -100px 1px, calc(100% - 1px) -100px, calc(100% + 100px) calc(100% - 1px), 1px 0px;
+  animation: moveLine 8s infinite linear;
+  height: calc(100% - 2px);
+  padding: 1px;
+  background-clip: content-box;
+}
+
+.box {
+  height: 300px;
+  width: 400px;
+  box-shadow: 0 0 3px orange;
+  text-align: center;
+  line-height: 280px;
+}
+
+</style>
+</head>
+	
+	<body>
+		<div class="box marquee-line">我是跑马灯啊^_^，点击我也可以查看Demo哦</div>
+	</body>
+</html>
+

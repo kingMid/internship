@@ -1,0 +1,99 @@
+<!---->
+<!--* @Description:ToDolist.html-->
+<!--* @author zhangzhong-->
+<!--* @date 2020/11/30-->
+<!--*/  -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+    class Main extends React.Component{
+        constructor(){
+            super();
+            this.state = {
+                list: [
+                    {name: "吃饭",ischeck: false},
+                    {name: "睡觉",ischeck: false},
+                    {name: "做头发",ischeck: false},
+                    {name: "偷彬哥的小猫咪",ischeck: false}
+                ]
+            }
+            this.addList = this.addList.bind(this)
+        }
+
+        addList(value){
+            if(value.trim()==''){
+                alert("请先输入！")
+	            return
+            }
+
+                let arr = this.state.list;
+                arr.unshift({name:value,ischeck:false})
+                this.setState({
+                    list: arr
+                });
+
+        }
+
+        render(){
+            return (
+                <div>
+                    <h1>ToDoList</h1>
+                    <ShowList list={this.state.list} />
+                    <AddList addList={this.addList}  />
+                </div>
+            )
+        }
+    }
+
+    class ShowList extends React.Component{
+        render(){
+            return (
+                <div>
+                    <ul>
+                        {
+                            this.props.list.map((item,index) => {
+                                return <li key={index}>
+                                    <input type="checkbox" value={this.props.list.fl}/>
+                                    {item.name}</li>
+                            })
+                        }
+                    </ul>
+                </div>
+            )
+        }
+    }
+
+    class AddList extends React.Component{
+        handlleClick() {
+            let a =this.input.value
+            this.props.addList(a)
+            console.log(this.input.value)
+            this.input.value=''
+        }
+        render(){
+            return (
+                <div>
+                    <input type="text" ref={input=>this.input=input}/>
+                    <button onClick={ () => this.handlleClick() }>add
+                    </button>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Main/>,document.getElementById('root'))
+</script>
+</body>
+</html>

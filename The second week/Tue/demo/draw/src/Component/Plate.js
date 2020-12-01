@@ -12,6 +12,7 @@ class Plate extends Component{
         super(props);
         this.state = {
             username: '张**',
+            flag:0,
             list: [
                 {name: '华为手机',probability: 0.1,id: 1,imgSrc: './image/1.jpg'},
                 {name: '苹果手机',probability: 0.1,id: 2,imgSrc: './image/2.jpg'},
@@ -36,6 +37,7 @@ class Plate extends Component{
     }
 
     getRes(msg){
+
         let arr = this.state.msg;
         arr.unshift({name: this.state.username,content: msg})
         setTimeout(() => {
@@ -47,6 +49,10 @@ class Plate extends Component{
 
     genRes(){
         let num = this.rand(100)
+        this.setState({
+                    flag:this.state.flag+1
+                })
+
         console.log(num)
         if (num === 100){
             this.getRes('苹果手机')
@@ -82,7 +88,7 @@ class Plate extends Component{
                 <ul>{
                     this.state.list.map((item,index) => {
                         if (item.id !== 5){
-                            return (<li key={index}>
+                            return (<li key={index} style={item.id===this.state.flag?{background:"red"}:{background:"#ffde8d"}}>
                                 <div className="box">
                                     <img src={item.imgSrc} alt=""/>
                                     <p className="boxtext">{item.name}</p>

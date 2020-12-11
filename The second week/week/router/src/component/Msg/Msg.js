@@ -1,13 +1,13 @@
 import React,{Component} from 'react';
 
-class Moive extends Component{
+class Msg extends Component{
     render(){
         return (
             <div>
-                这是电影页
+                这是Msg页面
             </div>
         );
     }
 }
 
-export default Moive;
+export default Msg;

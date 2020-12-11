@@ -1,0 +1,37 @@
+.main{
+    width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+.box{
+    width: 860px;
+    height: 400px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0 auto;
+}
+.color{
+    margin: 0 auto;
+    width:80px;
+    height:20px;
+}
+.ref,.change,.redux{
+    width: 300px;
+    height: 300px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    flex: 0 0 auto;
+    color: white;
+    font-size: 10px;
+}
+.ref{
+    background-color: mediumvioletred;
+}
+.change{
+    background-color: #1E63B0;
+}
+.redux{
+    background-color: lightcoral;
+}

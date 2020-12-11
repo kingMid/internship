@@ -1,0 +1,9 @@
+.home{
+    width: 800px;
+    height: 865px;
+    margin: 50px auto;
+    text-align: center;
+}
+.active{
+    background-color: yellow;
+}

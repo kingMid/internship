@@ -1,0 +1,72 @@
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+const theacher = "jszhong";
+console.log(theacher);
+
+class Student {
+  constructor() {
+    _defineProperty(this, "study", true);
+  }
+
+  say() {
+    return 'i am a good student!';
+  }
+
+}
+
+class Teacher {
+  constructor() {
+    _defineProperty(this, "study", false);
+  }
+
+  teach() {
+    return 'i`m your teacher !';
+  }
+
+} // function judgeWho(animal:Student | Teacher){
+// 	if(animal.study){
+// 		(animal as Student).say();
+// 	} else {
+// 		(animal as Teacher).teach();
+// 	}
+// }
+// function judgeWho(animal:Student | Teacher){
+// 	if('say' in animal){
+// 		animal.say();
+// 	} else {
+// 		animal.teach();
+// 	}
+// }
+//
+
+
+function add(first, second) {
+  if (typeof first === 'string' || typeof second === 'string') {
+    return `${first}${second}`;
+  }
+
+  return first + second;
+}
+
+console.log();
+
+class NumberObj {}
+
+function addObj(first, second) {
+  if (first instanceof NumberObj && second instanceof NumberObj) {
+    if (typeof first.count === 'undefined' || typeof second.count === 'undefined') {
+      return 0;
+    }
+
+    return first.count + second.count;
+  }
+
+  return 0;
+}
+
+const p1 = new NumberObj();
+p1.count = 120;
+const p2 = new NumberObj();
+p2.count = 120;
+const num = addObj(p1, p2);
+console.log('addObj', num);

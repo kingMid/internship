@@ -1,0 +1,31 @@
+const theacher = "jszhong";
+console.log(theacher);
+
+// function judgeWho(animal:Student | Teacher){
+// 	if(animal.study){
+// 		(animal as Student).say();
+// 	} else {
+// 		(animal as Teacher).teach();
+// 	}
+// }
+// function judgeWho(animal:Student | Teacher){
+// 	if('say' in animal){
+// 		animal.say();
+// 	} else {
+// 		animal.teach();
+// 	}
+// }
+//
+// function add(first: string | number, second: string | number){
+// 	if(typeof first === 'string' || typeof  second === 'string'){
+// 		return `${first}${second}`;
+// 	}
+//
+// 	return first + second
+//
+// }
+class NumberObj {}
+
+function addObj(first, second) {
+  return;
+}

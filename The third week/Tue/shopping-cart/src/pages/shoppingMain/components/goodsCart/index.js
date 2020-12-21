@@ -21,7 +21,7 @@ class Cart extends Component{
      *
      */
     componentDidMount(){
-        this.props.getRes()
+        this.props.getRes();
     }
 
     /**
@@ -61,6 +61,9 @@ class Cart extends Component{
                                     </div>
                                     <div className="price">
                                         ￥<span className="price-num">{item.price}</span>
+                                        {
+                                            item.seckill ? <div className="sec-kill">秒杀价</div> : ''
+                                        }
                                     </div>
                                     <div className="tag">
                                         <div className="proprietary">自营</div>
@@ -90,7 +93,7 @@ class Cart extends Component{
 let mapStateToProps = (state) => {
 
     return {
-        list: state.list
+        list: state.list,
     }
 
 }

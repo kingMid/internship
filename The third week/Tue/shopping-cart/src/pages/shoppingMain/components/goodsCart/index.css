@@ -195,3 +195,16 @@
 
 }
 
+.sec-kill{
+    width: 45px;
+    text-align: center;
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    border-radius:5px;
+    margin-left: 5px;
+    color: #eee;
+    background-color: #f65f2d;
+}
+
